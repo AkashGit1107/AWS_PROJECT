@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+
+	<title>Barber King </title>
+	<link rel="icon" href="css/img/crown.png" type="image/icon type">
+	<link rel="stylesheet" type="text/css" href="css/booking.css">
+  <link href='https://fonts.googleapis.com/css?family=Alexandria' rel='stylesheet'>
+<body>
+<header class="header">
+  <a href="" class="logo">Barber King <img src="css/img/crown.png" alt="Logo" class="crown"></a>
+  <nav class="nav-items">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="price.html">Pricing</a>
+    <a href="booking.html" class="active">Booking</a>
+  </nav>
+</header>
+
+<script>
+function nullcheck(){
+	var username=document.booking.name.value;
+	
+	var phonenumber=document.booking.number.value;
+	var email=document.booking.email.value;
+	if(username==null || username==""){
+	alert("name can't be blank");
+	return false;
+	}
+	
+	else if(phonenumber==null || phonenumber==""){
+	alert("phonenumber can't be blank");
+	return false;
+	}
+	else if (email==null || email==""){
+	alert("email can't be blank");
+	return false;
+	}
+	else if (username.length<3){
+	alert("Please Enter valid name");
+	return false;
+	}
+	else if (phonenumber.length!=10){
+	alert("Please Enter valid Phone number");
+	return false;
+	}
+	}
+	function validate(obj,event){
+	var inp=obj.name;
+	if(inp == "username"){
+	var k=event.keyCode;
+	if((k>=33 && k<=64)||(k>=91&&k<=96)){
+	alert("Numbers and special character not allow");
+	return false;
+	}
+	}
+	else  if (inp=="phonenumber"){
+	var k=event.keyCode;
+	if(k>31&&(k<48||k>57)){
+	alert("alpha and special character not allow");
+	return false;
+	}
+	}
+	}
+	
+		function CheckEmail(){
+		var email=document.booking.email.value;
+		var mail=/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;//regex
+		if(!email.match(mail))
+		{
+		alert('email must contain @ and .');
+		return false;
+		}
+		}
+		function validateSubmit(){
+			var retvalue;
+			
+			retvalue=nullcheck();
+			if(retvalue==false){return retvalue;}
+			
+			
+			retvalue=CheckEmail();
+			if(retvalue==false){return retvalue;}
+			}
+
+
+</script>
+
+
+
+<main>
+  <div class="intro"></br></br></br>
+    <h1>Make An Appointment</h1>
+    <p>Take your Seat.</p>
+  </div>
+
+<div style= "font-size:30px" 
+	align="center">
+       
+          </div>
+
+ <div class="container">
+      <div class="content">
+        <div class="left-side">
+          <div class="address details">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="topic">Address</div>
+            <div class="text-one">Barber King,</div>
+            <div class="text-one">Pallikaranai,</div>
+            <div class="text-two">Chennai 600 100.</div>
+          </div>
+          <div class="phone details">
+            <i class="fas fa-phone-alt"></i>
+            <div class="topic">Phone</div>
+            <div class="text-one">+91 73583 89193</div>
+            <div class="text-two">+91 74017 37119</div>
+          </div>
+          <div class="email details">
+            <i class="fas fa-envelope"></i>
+            <div class="topic">Email</div>
+            <div class="text-one">barberking@gmail.com</div>
+            <div class="text-two">info.barberking@gmail.com</div>
+          </div>
+        </div>
+        <div class="right-side"><br>
+          <div class="topic-text1">Bookings</div><br>
+          <div class="topic-text">Make An Appointment</div>
+          <p>Pick A Time for Your Cut. After you handpick your barber and service, select a time slot that fits your schedule.</p>
+          
+          <form name="booking" method="post" action="DBbooking">
+            <div class="input-box">
+              <input type="text" placeholder="Enter your name" name="name" onkeypress="return validate(this,event)"/>
+            </div>
+            <div class="input-box">
+              <input type="text" placeholder="Enter your Mobile Number" name="number"onkeypress="return validate(this,event)" />
+            </div>
+            <div class="input-box">
+              <input type="text" placeholder="Enter your email" name="email" onkeypress="return validate(this,event)"/>
+            </div>
+            <div class="input-box">
+              <input type="date" min="your-date" placeholder="Pick your date" name="bookingdate"/>
+            </div>
+            <div class="input-box" name="stylist">
+              <label for="stylist">Choose your Stylist:</label>
+              <select name="stylist" id="stylist">
+                <option value="style-director">Style Director</option>
+                <option value="creative-director">Creative Director</option>
+                <option value="top-stylist">Top Stylist</option>
+                <option value="senior-stylist">Senior Stylist</option>
+              </select>
+            </div>
+            <div class="input-box message-box">
+              <textarea placeholder="Enter your message" name="message"></textarea>
+            </div>
+            <div class="book">
+              <input type="submit" value="Book Now" onClick="return validateSubmit()" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+
+</main>
+
+
+<footer class="footer">
+  <div class="copy"><span>Address</span>
+  <p>Barber King,</p>
+<p>Pallikaranai,</p>
+<p>Chennai 600 100.</p></div>
+<div class="foot"><span>Contact us</span>
+<p>via Phone</p>
+<p>+91 73583 89193</p>
+<p>+91 74017 37119</p></div>
+<div class="foott"><span>Contact us</span>
+<p>via Email</p>
+	<p>barberking@gmail.com</p>
+<p>info.barberking@gmail.com</p>
+</div>
+  <div class="bottom-links">
+    <div class="links">
+      <span>Quick Links</span>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="price.html">Pricing</a>
+      <a href="booking.html">Booking</a>
+    </div>
+    <div class="links">
+      <span>Social Links</span>
+      <a href="#"><img src="css/img/fb.png" class="social"></img></a>
+      <a href="#"><img src="css/img/tw.png" class="social"></img></a>
+      <a href="#"><img src="css/img/in.png" class="social"></img></a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
